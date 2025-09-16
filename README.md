@@ -18,8 +18,14 @@ A high-performance Go tool for testing HTTP method vulnerabilities with concurre
 
 ### Quick Install (Recommended)
 ```bash
+# Method 1: Direct install (bypasses proxy cache)
+GOPROXY=direct go install github.com/TheWation/GoTamperX@latest
+
+# Method 2: Regular install (may take a few minutes for proxy to update)
 go install github.com/TheWation/GoTamperX@latest
 ```
+
+**Note:** The binary will be installed as `GoTamperX` (based on module name)
 
 ### Prerequisites
 - Go 1.20 or later
@@ -48,22 +54,22 @@ go install ./cmd/tamperx
 
 ```bash
 # Test a single URL
-./tamperx -u https://example.com
+GoTamperX -u https://example.com
 
 # Test with custom timeout
-./tamperx -u https://example.com -t 30
+GoTamperX -u https://example.com -t 30
 
 # Test with custom concurrency
-./tamperx -u https://example.com -c 16
+GoTamperX -u https://example.com -c 16
 
 # Test through a proxy
-./tamperx -u https://example.com -p http://proxy:8080
+GoTamperX -u https://example.com -p http://proxy:8080
 
 # Test with random User-Agent headers
-./tamperx -u https://example.com --random-agent
+GoTamperX -u https://example.com --random-agent
 
 # Test with custom headers
-./tamperx -u https://example.com -H "Authorization: Bearer token123" -H "X-Custom-Header: value"
+GoTamperX -u https://example.com -H "Authorization: Bearer token123" -H "X-Custom-Header: value"
 ```
 
 ### Command Line Options
@@ -111,10 +117,10 @@ Control the number of simultaneous requests:
 
 ```bash
 # Low concurrency for rate-limited targets
-./tamperx -u https://example.com -c 2
+GoTamperX -u https://example.com -c 2
 
 # High concurrency for fast testing
-./tamperx -u https://example.com -c 32
+GoTamperX -u https://example.com -c 32
 ```
 
 ### Proxy Support
@@ -123,19 +129,19 @@ Test through various proxy types:
 
 ```bash
 # HTTP proxy
-./tamperx -u https://example.com -p http://proxy:8080
+GoTamperX -u https://example.com -p http://proxy:8080
 
 # HTTPS proxy
-./tamperx -u https://example.com -p https://proxy:8080
+GoTamperX -u https://example.com -p https://proxy:8080
 
 # SOCKS proxy (if supported by Go)
-./tamperx -u https://example.com -p socks5://proxy:1080
+GoTamperX -u https://example.com -p socks5://proxy:1080
 
 # Random User-Agent for stealth testing
-./tamperx -u https://example.com --random-agent
+GoTamperX -u https://example.com --random-agent
 
 # Combine multiple features
-./tamperx -u https://example.com -p http://proxy:8080 --random-agent -c 16 -t 30
+GoTamperX -u https://example.com -p http://proxy:8080 --random-agent -c 16 -t 30
 ```
 
 **Note**: SSL verification is disabled when using proxies for maximum compatibility.
@@ -146,10 +152,10 @@ Randomize User-Agent headers to avoid detection and test different browser behav
 
 ```bash
 # Enable random User-Agent
-./tamperx -u https://example.com --random-agent
+GoTamperX -u https://example.com --random-agent
 
 # Random User-Agent with custom concurrency
-./tamperx -u https://example.com --random-agent -c 4
+GoTamperX -u https://example.com --random-agent -c 4
 ```
 
 **Available User-Agents**: Chrome, Firefox, Safari, Edge on Windows, macOS, and Linux.
@@ -160,13 +166,13 @@ Add custom HTTP headers to test specific scenarios:
 
 ```bash
 # Single custom header
-./tamperx -u https://example.com -H "Authorization: Bearer token123"
+GoTamperX -u https://example.com -H "Authorization: Bearer token123"
 
 # Multiple custom headers
-./tamperx -u https://example.com -H "X-API-Key: abc123" -H "Content-Type: application/json"
+GoTamperX -u https://example.com -H "X-API-Key: abc123" -H "Content-Type: application/json"
 
 # Custom headers with other features
-./tamperx -u https://example.com -H "X-Custom: value" --random-agent -c 4
+GoTamperX -u https://example.com -H "X-Custom: value" --random-agent -c 4
 ```
 
 **Common Use Cases**:

@@ -18,7 +18,7 @@ A high-performance Go tool for testing HTTP method vulnerabilities with concurre
 
 ### Quick Install (Recommended)
 ```bash
-go install github.com/TheWation/GoTamperX/cmd/tamperx@latest
+go install github.com/TheWation/GoTamperX@latest
 ```
 
 ### Prerequisites

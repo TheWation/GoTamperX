@@ -13,7 +13,7 @@ import (
 	"sync"
 	"time"
 
-	"tamperx/internal/errors"
+	"github.com/TheWation/GoTamperX/internal/errors"
 )
 
 type Result struct {

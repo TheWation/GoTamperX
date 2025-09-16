@@ -1,4 +1,4 @@
-module tamperx
+module github.com/TheWation/GoTamperX
 
 go 1.20
 
